@@ -206,10 +206,69 @@ draw_circle(10, 5)  # 圓的半徑為 4.5
 </pre>
 <p>3. 完成上列題目後, 請利用 Youtube 影片<span>簡報</span>個人的解題過程與心得.</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="630" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/wdXUeTYXEIY?si=rRrhcOUFOAV-ltNx" title="YouTube video player" width="1120"></iframe></p>
+<p>超級圓：</p>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/44f341d9a8ce686921995793967e3174/raw/6dc0487893166c6d15b2fc8fb44083149238865d/superc.py">超級圓</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 建立 canvas 超文件物件
+canvas = html.CANVAS(width=5000, height=5000)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 每一格的 pixel 數
+gs = 1
+
+# canvas context
+ctx = canvas.getContext("2d")
+
+# 定義繪製矩形的函數
+def dRect(lux, luy, w, h, s=1, c="lightgrey"):
+    ctx.lineWidth = s
+    ctx.strokeStyle = c
+    ctx.beginPath()
+    ctx.rect(lux, luy, w, h)
+    ctx.stroke()
+
+# 繪製網格
+def grid(width, height, grid_pix):
+    for i in range(width):
+        for j in range(height):
+            dRect(i * grid_pix, j * grid_pix, grid_pix, grid_pix, 1, "lightgrey")
+
+# 填滿指定格子
+def fill(x, y, color):
+    ctx.fillStyle = color
+    ctx.fillRect((x - 1) * gs, (y - 1) * gs, gs, gs)
+
+# 判斷是否在圓形範圍內
+def is_in_circle(cx, cy, x, y, r):
+    return ((x - cx) ** 2 + (y - cy) ** 2) &lt;= r ** 2
+
+# 圓形繪製
+def draw_circle(grid_size, radius):
+    center = (grid_size // 2) + 0.5  # 圓心位於中心
+    for i in range(1, grid_size + 1):
+        for j in range(1, grid_size + 1):
+            # 檢查格子中心點是否在圓內
+            if is_in_circle(center, center, i, j, radius):
+                fill(i, j, "black")
+
+# 主程式
+grid(800, 800, gs)
+draw_circle(800, 400)  # 圓的半徑為 4.5</pre>
 <p>簡報流程心得</p>
 <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;"><iframe allow="fullscreen" allowfullscreen="allowfullscreen" height="150" loading="lazy" src="https://www.canva.com/design/DAGXkybjGcU/sHgXRX1Mylb-n74SCCiX9Q/view?embed" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" width="300"></iframe></div>
 <p>周昀融 設計的 <a href="https://www.canva.com/design/DAGXkybjGcU/sHgXRX1Mylb-n74SCCiX9Q/view?utm_content=DAGXkybjGcU&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" rel="noopener" target="_blank">程式設計簡報</a></p>
-<p></p>
+<p>11/27 <a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/44f341d9a8ce686921995793967e3174/raw/9e12346e0616618278f2173c8241769b3cd26b8a/1127.py">程式</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">n=11 
+space='_'
+center=n//2
+#print(center)
+
+for y in range(n):
+        for x in range(n):
+            print("(", x, ", ", y, ")", sep="")</pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
