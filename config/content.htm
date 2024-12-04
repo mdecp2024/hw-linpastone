@@ -368,24 +368,25 @@ print (cities[::-1]) #列印 城市 [::-1]) ['Melbourne', 'Tokyo', 'Cape Town', 
 <p></p>
 <p></p><h2>w13_hw</h2>
 <p>W13 上課題目 <a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/0f0f228bbbfc29a02bb932958aeadb96/raw/9553d3f4f51fd86a13406ee5c4ec52f554c117dd/1204.py">重疊方形</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
-from browser import document as doc
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html #導入html函式庫
+from browser import document as doc #導入document程式庫並在程式中命名(簡寫)為doc
 
 # 利用 html 建立 canvas 超文件物件
-canvas = html.CANVAS(width = 400,height = 400)
-brython_div = doc["brython_div1"]
-brython_div &lt;= canvas
+canvas = html.CANVAS(width = 400,height = 400) #將變數canvas指定為html.CANVAS(width = 400,height = 400) 
+#意思是建立*(準備)一個400*400的空間(畫布)
+brython_div = doc["brython_div1"] #將變數brython_div指定為doc["brython_div1"]
+brython_div &lt;= canvas #將canve指定為子元素加入倒brython_div中
 
 # 每一格的 pixel 數
-gs = 200
+gs = 200 
 
 # gs*tc = canvas width and height
 
-ctx = canvas.getContext("2d")
+ctx = canvas.getContext("2d") #將ctx指定(簡寫)為canvas.getContext("2d") (獲取畫布（canvas）的 2D 繪圖上下文 (context))
+width=1 #方形的寬
+height=1 #方形的高
 
-width=1
-height=1
-
+#第一個方形
 for i in range(width): 
     for j in range(height):
      #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
@@ -395,13 +396,14 @@ for i in range(width):
      ctx.rect(i*gs,j*gs,gs,gs)
      ctx.stroke();
      
+#第二個偏移的方形
 for i in range(width): 
     for j in range(height):
      #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
      ctx.lineWidth=1
      ctx.strokeStyle='red'
      ctx.beginPath();
-     ctx.rect(i*gs+100,j*gs+100,gs,gs)
+     ctx.rect(i*gs+100,j*gs+100,gs,gs)      #gs+100代表往右下偏移100像素
      ctx.stroke();</pre>
 <p></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
