@@ -124,7 +124,7 @@
 <p style="padding-left: 30px;">Python Code to Calculate \( t \): <a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/d9558707c7e1765c1e6885ddc6919e32265c6d23/problem-set2-1_py.txt">problem-set2-1.py</a></p>
 <p></p>
 </div>
-<h3>w11</h3>
+<h3>w11_hw</h3>
 <p>以下影片說明如何利用近端可攜系統維護個人作業網站:</p>
 <p>標記</p>
 <p>1.  已知可以用 Python 程式<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/c2225ac22f32ee8485a630b42cf3f4d8567bb661/up_to_down_pyramid.py">由上往下列印三角形 *</a>, 或<a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5e6eda7a004c15fa7262b9a80bfa4af6/raw/56793c72d4495d564e3cc6214ed5fb68dbd2b21d/left_to_right_pyramid.py">由左往右列印三角形 *</a>, 請將此程式延伸到可以在 10x10 的字元區域中, 以 "*" 字元列印出圓型區域. 完成後請將程式碼存入個人 Gist 後, 直接在個人作業網站中的 Brython 頁面中執行. (提示: ?src=gist_script_URL)</p>
@@ -344,9 +344,25 @@ print (todays_menu) #列印今日菜單</pre>
 <p><em>第六題：切片取值</em></p>
 <p><span>    說明：</span><span>[star:end:step][起點:終點:步長]</span></p>
 <p><span>Q6範例程式：<a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/77973311426bbdb1ee2e06f879641aa4/raw/62a854af30adef664af0a517a2ca6357504e1d81/Q6.py">城市</a></span></p>
-<p><em>第七題：切片取值</em></p>
-<p><span>    說明：</span><span>[star:end:step][起點:終點:步長]</span></p>
-<p><span>Q6範例程式：<a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/77973311426bbdb1ee2e06f879641aa4/raw/62a854af30adef664af0a517a2ca6357504e1d81/Q6.py">城市</a></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">cities = ["San Diego", "Prague", "Cape Town", "Tokyo", "Melbourne"] #變數城市=以下字串
+print (cities) #列印 (城市)
+print (cities[1]) #列印 (城市 [1])    由於程式是由0開始計算 所以第一個會是Prague
+print (cities[1:4]) #列印 (城市 [1:4]) 列印出來會是['Prague', 'Cape Town', 'Tokyo'] 由於執行到4就停止了所以只有三個
+print (cities[1:4:2]) #列印 城市 [1:4:2]) 列印出來會是['Prague', 'Tokyo'] 因為步數設定為2 程式執行會把1~4由左至右一次跳過兩個進行輸出
+print (cities[0:3]) #列印 城市 [0:3]) 列印出來會是['San Diego', 'Prague', 'Cape Town'] 這次是從0開始計算
+print (cities[:3]) #列印 城市 [:3]) 列印出來會是['San Diego', 'Prague', 'Cape Town'] 由於未輸入數值,默認為0
+print (cities[2:5]) #列印 城市 [2:5]) 列印出來會是 ['Cape Town', 'Tokyo', 'Melbourne'] 從2~5
+print (cities[2:]) #列印 城市 [2:]) 列印出來會是 ['Cape Town', 'Tokyo', 'Melbourne'] 如果結束未輸入默認為列表的長度之值
+print (cities[0:5:2]) #列印 城市 [0:5:2]) 列印出來會是['San Diego', 'Cape Town', 'Melbourne'] 程式執行會把0~5由左至右一次跳過兩個進行輸出
+print (cities[::2]) #列印 城市 [::2]) 列印出來會是 ['San Diego', 'Cape Town', 'Melbourne'] 未輸入開始會默認0終點會默認列表的長度
+print (cities[4]) #列印 城市 [4]) 列印出來會是 Melbourne 
+print (cities[-1]) #列印 城市 [-1]) 列印出來會是 Melbourne -值會倒退計算 "含前不含後"
+print (cities[-4:-1]) #列印 城市 [-4:-1]) 列印出來會是 ['Prague', 'Cape Town', 'Tokyo']
+cities[3:0:-1] #這個是切片操作 如果列印出來會是 ['Tokyo', 'Cape Town', 'Prague']
+cities[-2:-5:-1] #這個是切片操作 如果列印出來會是 ['Tokyo', 'Cape Town', 'Prague']
+print (cities[::-1]) #列印 城市 [::-1]) ['Melbourne', 'Tokyo', 'Cape Town', 'Prague', 'San Diego']</pre>
+<p><em> </em></p>
+<p><span></span></p>
 <p><br/><br/></p>
 <p></p>
 <p></p>
