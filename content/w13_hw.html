@@ -141,12 +141,44 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW 3 << <a href='HW 3.html'>Previous</a> <a href='10.16.html'>Next</a> >> 10.16<br /><h1>HW 3 Exam</h1>
-<p>每六人為一組進行協同程式練習</p>
-<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 3 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<p></p>
-<br />HW 3 << <a href='HW 3.html'>Previous</a> <a href='10.16.html'>Next</a> >> 10.16</div>
+    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2<br /><h1>w13_hw</h1>
+<p>W13 上課題目 <a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/0f0f228bbbfc29a02bb932958aeadb96/raw/9553d3f4f51fd86a13406ee5c4ec52f554c117dd/1204.py">重疊方形</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width = 400,height = 400)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 每一格的 pixel 數
+gs = 200
+
+# gs*tc = canvas width and height
+
+ctx = canvas.getContext("2d")
+
+width=1
+height=1
+
+for i in range(width): 
+    for j in range(height):
+     #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+     ctx.lineWidth=1
+     ctx.strokeStyle='red'
+     ctx.beginPath();
+     ctx.rect(i*gs,j*gs,gs,gs)
+     ctx.stroke();
+     
+for i in range(width): 
+    for j in range(height):
+     #dRect(i*gs, j*gs, gs, gs, 1, "lightgrey")
+     ctx.lineWidth=1
+     ctx.strokeStyle='red'
+     ctx.beginPath();
+     ctx.rect(i*gs+100,j*gs+100,gs,gs)
+     ctx.stroke();</pre>
+<p></p><br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='HW 2.html'>Next</a> >> HW 2</div>
         
     <!-- footer -->
       <div class="container">
