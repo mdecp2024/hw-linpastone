@@ -771,15 +771,34 @@ for x in range(0, width, 5):
             ctx.fillStyle = "gray"  # 三個圓外的區域設為灰色
             ctx.fill()
 </pre>
-<p><br/><br/></p><h1>HW 2</h1>
+<p><br/><br/></p><h2>w15</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sum_result = 0 #建立變數sum_result
+i = 1 #指定i等於1
+while i &lt;= 100:     #使用while迴圈把i加到等於100
+    sum_result += i   
+    i += 1
+print(sum_result)</pre>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15.py">範例程式</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
+def addto(start, end):   #定義函數addto
+    sum_result = 0       #設定數值sum_result=0
+    i = start            #設定i=start
+    while i &lt;= end:      #設結束之值為end
+        sum_result += i  
+        i += 1
+    return sum_result    #終止函數運行並返回數值至result
+    
+#調用程式
+result = addto(1, 100)   #設定起始值
+print(result)            #列印result</pre>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15%25202.py">範例程式</a></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
 <p>延續 HW 1 網頁資料整理與程式練習方法, 整理下列內容 (20%):</p>
 <p>PART 2: Introduction to lists and if/else statements</p>
 <p>PART 3: Introduction to the for loop</p>
-<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
-<h2>HW 2 Exam</h2>
+<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p><h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h1>HW 3</h1>
