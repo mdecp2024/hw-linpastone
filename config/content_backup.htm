@@ -269,7 +269,8 @@ center=n//2
 for y in range(n):
         for x in range(n):
             print("(", x, ", ", y, ")", sep="")</pre>
-<p></p><h2>w12_hw</h2>
+<p></p>
+<h2>w12_hw</h2>
 <p><em>第一題：input()與 print()</em></p>
 <p>input()範例程式：<a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/77973311426bbdb1ee2e06f879641aa4/raw/c5b4f3f78845922ec827cf34f07e351d86c76e28/1202.py">你叫啥</a></p>
 <p>    說明：input為輸入()中為問題,使用者輸入之答案會變成返回的值</p>
@@ -366,7 +367,8 @@ print (cities[::-1]) #列印 城市 [::-1]) ['Melbourne', 'Tokyo', 'Cape Town', 
 <p><br/><br/></p>
 <p></p>
 <p></p>
-<p></p><h2>w13_hw</h2>
+<p></p>
+<h2>w13_hw</h2>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/get_page/cmsimde/static/brython.js"></script>
@@ -490,23 +492,148 @@ for i in range(width):
 <p></p>
 <p></p>
 <p></p>
-<p>1</p><h2>TEST</h2>
-<!-- 導入 brython 程式庫 -->
-<p>
-<script src="/get_page/cmsimde/static/brython.js"></script>
-<script src="/get_page/cmsimde/static/brython_stdlib.js"></script>
-</p>
-<!-- 啟動 Brython -->
-<p>
-<script>
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
-}
-</script>
-Brython Embedded Example
-<script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js" type="text/javascript"></script>
-<!-- 定義畫布的容器 --></p>
-<div id="brython_div1"></div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+
+# 建立 canvas 元素
+canvas = html.CANVAS(width=500, height=500)
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+
+# 定義圓心和半徑
+x1, y1 = 200, 200  # 第一個圓的圓心
+x2, y2 = 300, 300  # 第二個圓的圓心
+radius = 141.4  # 圓的半徑
+
+ctx = canvas.getContext("2d")
+
+# === 繪製第一個圓 ===
+ctx.beginPath()
+ctx.arc(x1, y1, radius, 0, 2 * 3.14159)
+ctx.fillStyle = "black"
+ctx.fill()
+
+# === 繪製重疊區域 (黑色交集區塊) ===
+ctx.save()  # 保存繪圖狀態
+ctx.beginPath()
+ctx.arc(x1, y1, radius, 0, 2 * 3.14159)
+ctx.clip()  # 限制繪圖範圍為第一個圓
+
+ctx.beginPath()
+ctx.arc(x2, y2, radius, 0, 2 * 3.14159)
+ctx.fillStyle = "black"
+ctx.fill()
+ctx.restore()  # 恢復繪圖狀態
+
+# === 填充第一個圓其他區域 ===
+# 填充左半部分 (紅色)
+ctx.beginPath()
+ctx.moveTo(x1, y1)
+ctx.arc(x1, y1, radius, 3.14159, 3.14159 * 1.5, False)
+ctx.closePath()
+ctx.fillStyle = "red"
+ctx.fill()
+
+# 填充上半部分 (藍色)
+ctx.beginPath()
+ctx.moveTo(x1, y1)
+ctx.arc(x1, y1, radius, 3.14159 * 1.5, 0, False)
+ctx.closePath()
+ctx.fillStyle = "blue"
+ctx.fill()
+
+# 填充左下部分 (紫色)
+ctx.beginPath()
+ctx.moveTo(x1, y1)
+ctx.arc(x1, y1, radius, 3.14159 * 0.5, 3.14159, False)
+ctx.closePath()
+ctx.fillStyle = "purple"
+ctx.fill()
+
+# === 填充第二個圓區域 ===
+
+# 填充右上部分 (粉色)
+ctx.beginPath()
+ctx.moveTo(x2, y2)
+ctx.arc(x2, y2, radius, 3.14159 * 1.5, 0, False)
+ctx.closePath()
+ctx.fillStyle = "pink"
+ctx.fill()
+
+# 填充右下部分 (灰色)
+ctx.beginPath()
+ctx.moveTo(x2, y2)
+ctx.arc(x2, y2, radius, 0, 3.14159 * 0.5, False)
+ctx.closePath()
+ctx.fillStyle = "gray"
+ctx.fill()
+
+# 填充下半部分 (綠色)
+ctx.beginPath()
+ctx.moveTo(x2, y2)
+ctx.arc(x2, y2, radius, 3.14159 * 0.5, 3.14159, False)
+ctx.closePath()
+ctx.fillStyle = "green"
+ctx.fill()
+
+# === 繪製輔助框架與對角線 ===
+# 繪製兩個圓的邊框
+ctx.lineWidth = 2
+ctx.strokeStyle = "black"
+ctx.beginPath()
+ctx.arc(x1, y1, radius, 0, 2 * 3.14159)
+ctx.stroke()
+
+ctx.beginPath()
+ctx.arc(x2, y2, radius, 0, 2 * 3.14159)
+ctx.stroke()
+
+# 繪製正方形框架
+ctx.lineWidth = 2
+ctx.strokeStyle = "red"
+
+# 第一個正方形
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)
+ctx.stroke()
+ctx.fillStyle = "green"  # 填充顏色
+ctx.fill()
+# 第二個正方形
+ctx.beginPath()
+ctx.rect(200, 200, 200, 200)
+ctx.stroke()
+ctx.fillStyle = "blue"  # 填充顏色
+ctx.fill()
+# 繪製對角線
+ctx.lineWidth = 2
+ctx.strokeStyle = "blue"
+ctx.beginPath()
+ctx.moveTo(100, 100)
+ctx.lineTo(300, 300)
+ctx.stroke()
+
+
+
+# 繪製第一個圓
+ctx.beginPath()
+ctx.arc(x1, y1, radius, 0, 2 * 3.14159)
+ctx.fillStyle = "black"
+ctx.fill()
+
+# 設置合成模式為 "source-in"（只保留交集部分）
+ctx.globalCompositeOperation = "source-in"
+
+# 繪製第二個圓
+ctx.beginPath()
+ctx.arc(x2, y2, radius, 0, 2 * 3.14159)
+ctx.fillStyle = "black"
+ctx.fill()
+
+# 恢復繪製狀態
+ctx.restore()
+
+</pre>
+<p>w13 <a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/cea9de86a2b98b7254676c8ed298f3d1/raw/30cc56f1e5727480079c0f333847e4c5e5ef95ec/1210.py">作業</a><br/><br/></p>
 <!-- 嵌入 Brython 程式碼 -->
 <script type="text/python">
         from browser import html  # 導入 HTML 函式庫
@@ -548,14 +675,111 @@ Brython Embedded Example
                 ctx.stroke()
     
 </script>
-<p></p><h1>HW 2</h1>
+<h2>w14_ex</h2>
+<p>1211上課程式：<a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/cea9de86a2b98b7254676c8ed298f3d1/raw/42bdd530436811f5f600c4535703e6be0f24c60a/1211.py">程式</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=800, height=600)
+        document &lt;= canvas
+
+setup_canvas()
+
+# 判斷點 (x, y) 是否在圓內，圓的圓心為 (cx, cy)，半徑為 r
+def is_inside_circle(x, y, cx, cy, r):
+    distance = math.sqrt((x - cx) ** 2 + (y - cy) ** 2)
+    return distance &lt;= r
+
+# 繪製圓
+def draw_circle(ctx, cx, cy, r):
+    ctx.beginPath()
+    ctx.arc(cx, cy, r, 0, 2 * math.pi)
+    ctx.stroke()
+
+# 獲取 canvas 上下文
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")
+
+# 用戶輸入三個圓的圓心座標和半徑
+circle1_center_x = float(input("輸入第一個圓的圓心 x 座標: "))
+circle1_center_y = float(input("輸入第一個圓的圓心 y 座標: "))
+circle1_radius = float(input("輸入第一個圓的半徑: "))
+
+circle2_center_x = float(input("輸入第二個圓的圓心 x 座標: "))
+circle2_center_y = float(input("輸入第二個圓的圓心 y 座標: "))
+circle2_radius = float(input("輸入第二個圓的半徑: "))
+
+circle3_center_x = float(input("輸入第三個圓的圓心 x 座標: "))
+circle3_center_y = float(input("輸入第三個圓的圓心 y 座標: "))
+circle3_radius = float(input("輸入第三個圓的半徑: "))
+
+# 繪製三個圓
+draw_circle(ctx, circle1_center_x, circle1_center_y, circle1_radius)
+draw_circle(ctx, circle2_center_x, circle2_center_y, circle2_radius)
+draw_circle(ctx, circle3_center_x, circle3_center_y, circle3_radius)
+
+# 遍歷一定範圍的點來確定所屬區域並著色
+width = canvas.width
+height = canvas.height
+for x in range(0, width, 5):
+    for y in range(0, height, 5):
+        in_circle1 = is_inside_circle(x, y, circle1_center_x, circle1_center_y, circle1_radius)
+        in_circle2 = is_inside_circle(x, y, circle2_center_x, circle2_center_y, circle2_radius)
+        in_circle3 = is_inside_circle(x, y, circle3_center_x, circle3_center_y, circle3_radius)
+
+        if in_circle1 and in_circle2 and in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "purple"  # 三個圓重疊區域設為紫色
+            ctx.fill()
+        elif in_circle1 and in_circle2:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "blue"  # 僅在圓1、圓2重疊（不含圓3重疊部分）區域設為藍色
+            ctx.fill()
+        elif in_circle1 and in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "green"  # 僅在圓1、圓3重疊（不含圓2重疊部分）區域設為綠色
+            ctx.fill()
+        elif in_circle2 and in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "yellow"  # 僅在圓2、圓3重疊（不含圓1重疊部分）區域設為黃色
+            ctx.fill()
+        elif in_circle1:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "cyan"  # 僅在圓1內（不含和其他圓重疊部分）區域設為青色
+            ctx.fill()
+        elif in_circle2:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "magenta"  # 僅在圓2內（不含和其他圓重疊部分）區域設為品紅
+            ctx.fill()
+        elif in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "orange"  # 僅在圓3內（不含和其他圓重疊部分）區域設為橙色
+            ctx.fill()
+        else:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "gray"  # 三個圓外的區域設為灰色
+            ctx.fill()
+</pre>
+<p><br/><br/></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
 <p>延續 HW 1 網頁資料整理與程式練習方法, 整理下列內容 (20%):</p>
 <p>PART 2: Introduction to lists and if/else statements</p>
 <p>PART 3: Introduction to the for loop</p>
-<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p><h2>HW 2 Exam</h2>
+<p>完成上述流程整理後, 請將 HW2 自評分數輸入 cp2024 自評表單中.</p>
+<h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
 <h1>HW 3</h1>

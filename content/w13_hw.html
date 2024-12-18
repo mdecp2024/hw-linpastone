@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='加入brython.html'>加入brython</a><li><a href='影片貼上網頁流程.html'>影片貼上網頁流程</a><li><a href='虛擬機建置流程.html'>虛擬機建置流程</a><li><a href='w10.html'>w10</a></li></ul><li><a href='w11_hw.html'>w11_hw</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='w13_hw.html'>w13_hw</a><li><a href='TEST.html'>TEST</a></li></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li class='has-children'><a href='HW 3 Exam.html'>HW 3 Exam</a><ul class='dropdown'><li><a href='10.16.html'>10.16</a><li><a href='10.09.html'>10.09</a><li><a href='local deployment.html'>local deployment</a></li></li></ul></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='加入brython.html'>加入brython</a><li><a href='影片貼上網頁流程.html'>影片貼上網頁流程</a><li><a href='虛擬機建置流程.html'>虛擬機建置流程</a><li><a href='w10.html'>w10</a></li></ul><li><a href='w11_hw.html'>w11_hw</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='w13_hw.html'>w13_hw</a><li><a href='w14_ex.html'>w14_ex</a><li><a href='w15.html'>w15</a></li></ul><li class='has-children'><a href='HW 2.html'>HW 2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li class='has-children'><a href='HW 3 Exam.html'>HW 3 Exam</a><ul class='dropdown'><li><a href='10.16.html'>10.16</a><li><a href='10.09.html'>10.09</a><li><a href='local deployment.html'>local deployment</a></li></li></ul></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,7 +141,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='TEST.html'>Next</a> >> TEST<br /><h1>w13_hw</h1>
+    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex<br /><h1>w13_hw</h1>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="/get_page/cmsimde/static/brython.js"></script>
@@ -406,7 +406,49 @@ ctx.fill()
 ctx.restore()
 
 </pre>
-<p>w13 <a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/cea9de86a2b98b7254676c8ed298f3d1/raw/30cc56f1e5727480079c0f333847e4c5e5ef95ec/1210.py">作業</a><br/><br/></p><br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='TEST.html'>Next</a> >> TEST</div>
+<p>w13 <a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/cea9de86a2b98b7254676c8ed298f3d1/raw/30cc56f1e5727480079c0f333847e4c5e5ef95ec/1210.py">作業</a><br/><br/></p>
+<!-- 嵌入 Brython 程式碼 -->
+<script type="text/python">
+        from browser import html  # 導入 HTML 函式庫
+        from browser import document as doc  # 簡化 document 的名稱為 doc
+
+        # 建立一個畫布並設置寬高
+        canvas = html.CANVAS(width=400, height=400)
+
+        # 將畫布插入到指定的 div 中
+        brython_div = doc["brython_div1"]
+        brython_div <= canvas
+
+        # 設置每一格的像素大小
+        gs = 200
+
+        # 獲取 2D 繪圖上下文
+        ctx = canvas.getContext("2d")
+
+        # 定義方形的寬度和高度
+        width = 1
+        height = 1
+
+        # 繪製第一個方形
+        for i in range(width):
+            for j in range(height):
+                ctx.lineWidth = 1
+                ctx.strokeStyle = 'red'
+                ctx.beginPath()
+                ctx.rect(i * gs, j * gs, gs, gs)  # 方形位置和大小
+                ctx.stroke()
+
+        # 繪製第二個偏移的方形
+        for i in range(width):
+            for j in range(height):
+                ctx.lineWidth = 1
+                ctx.strokeStyle = 'red'
+                ctx.beginPath()
+                ctx.rect(i * gs + 100, j * gs + 100, gs, gs)  # 偏移 100 像素
+                ctx.stroke()
+    
+</script>
+<br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='w14_ex.html'>Next</a> >> w14_ex</div>
         
     <!-- footer -->
       <div class="container">

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Three Circles Coloring</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython_stdlib.js"></script>
+</head>
+
+<body onload="brython()">
+    <canvas id="my_canvas" width="800" height="600"></canvas>
+    <script type="text/python">
+from browser import document, window
+import math
+
+# 判断点(x, y)是否在圆内，圆的圆心为(cx, cy)，半径为r
+def is_inside_circle(x, y, cx, cy, r):
+    distance = math.sqrt((x - cx) ** 2 + (y - cy) ** 2)
+    return distance <= r
+
+# 绘制圆
+def draw_circle(ctx, cx, cy, r):
+    ctx.beginPath()
+    ctx.arc(cx, cy, r, 0, 2 * math.pi)
+    ctx.stroke()
+
+# 获取canvas上下文
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")
+
+# 获取三个圆的圆心坐标和半径输入
+circle1_center_x = float(input("请输入第一个圆的圆心x坐标: "))
+circle1_center_y = float(input("请输入第一个圆的圆心y坐标: "))
+circle1_radius = float(input("请输入第一个圆的半径: "))
+
+circle2_center_x = float(input("请输入第二个圆的圆心x坐标: "))
+circle2_center_y = float(input("请输入第二个圆的圆心y坐标: "))
+circle2_radius = float(input("请输入第二个圆的半径: "))
+
+circle3_center_x = float(input("请输入第三个圆的圆心x坐标: "))
+circle3_center_y = float(input("请输入第三个圆的圆心y坐标: "))
+circle3_radius = float(input("请输入第三个圆的半径: "))
+
+# 绘制三个圆
+draw_circle(ctx, circle1_center_x, circle1_center_y, circle1_radius)
+draw_circle(ctx, circle2_center_x, circle2_center_y, circle2_radius)
+draw_circle(ctx, circle3_center_x, circle3_center_y, circle3_radius)
+
+# 遍历一定范围的点来确定所属区域并着色（这里简单示例范围，可按需更精细处理）
+width = canvas.width
+height = canvas.height
+for x in range(0, width, 5):
+    for y in range(0, height, 5):
+        in_circle1 = is_inside_circle(x, y, circle1_center_x, circle1_center_y, circle1_radius)
+        in_circle2 = is_inside_circle(x, y, circle2_center_x, circle2_center_y, circle2_radius)
+        in_circle3 = is_inside_circle(x, y, circle3_center_x, circle3_center_y, circle3_radius)
+        if in_circle1 and in_circle2 and in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "purple"  # 三个圆重叠区域设为紫色
+            ctx.fill()
+        elif in_circle1 and in_circle2:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "blue"  # 仅在圆1、圆2重叠（不含圆3重叠部分）区域设为蓝色
+            ctx.fill()
+        elif in_circle1 and in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "green"  # 仅在圆1、圆3重叠（不含圆2重叠部分）区域设为绿色
+            ctx.fill()
+        elif in_circle2 and in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "yellow"  # 仅在圆2、圆3重叠（不含圆1重叠部分）区域设为黄色
+            ctx.fill()
+        elif in_circle1:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "cyan"  # 仅在圆1内（不含和其他圆重叠部分）区域设为青色
+            ctx.fill()
+        elif in_circle2:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "magenta"  # 仅在圆2内（不含和其他圆重叠部分）区域设为品红
+            ctx.fill()
+        elif in_circle3:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "orange"  # 仅在圆3内（不含和其他圆重叠部分）区域设为橙色
+            ctx.fill()
+        else:
+            ctx.beginPath()
+            ctx.arc(x, y, 2, 0, 2 * math.pi)
+            ctx.fillStyle = "gray"  # 三个圆外的区域设为灰色
+            ctx.fill()
+
+    </script>
+</body>
+
+</html>
