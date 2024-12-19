@@ -771,14 +771,32 @@ for x in range(0, width, 5):
             ctx.fillStyle = "gray"  # 三個圓外的區域設為灰色
             ctx.fill()
 </pre>
-<p><br/><br/></p><h2>w15</h2>
+<p><br/><br/></p><pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
+def addto(start, end):   #定義函數addto
+    sum_result = 0       #設定數值sum_result=0
+    i = start            #設定i=start
+    while i &lt;= end:      #設結束之值為end
+        sum_result += i  
+        i += 1
+    return sum_result    #終止函數運行並返回數值至result
+    
+#調用程式
+result = addto(1, 100)   #設定起始值
+print(result)            #列印result</pre><p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15.py">範例程式</a></p><pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sum_result = 0 #建立變數sum_result
+i = 1 #指定i等於1
+while i &lt;= 100:     #使用while迴圈把i加到等於100
+    sum_result += i   
+    i += 1
+print(sum_result)</pre><h2>w15</h2>
+<p></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sum_result = 0 #建立變數sum_result
 i = 1 #指定i等於1
 while i &lt;= 100:     #使用while迴圈把i加到等於100
     sum_result += i   
     i += 1
 print(sum_result)</pre>
-<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15.py">範例程式</a></p>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15.py">1~100</a></p>
+<p></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
 def addto(start, end):   #定義函數addto
     sum_result = 0       #設定數值sum_result=0
@@ -791,7 +809,29 @@ def addto(start, end):   #定義函數addto
 #調用程式
 result = addto(1, 100)   #設定起始值
 print(result)            #列印result</pre>
-<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15%25202.py">範例程式</a></p><h1>HW 2</h1>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15%25202.py"><span>addto</span></a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
+def add_only_even(start, end): #定義函數add_only_eve
+    result = 0                 #在函數內部定義一個區域變數為result
+    num = start                #初始化一個變數為num　並賦值為start
+    while num &lt;= end:          #設定一個while迴圈 循環條件為num &lt;= end只要當前的num沒有超過end就會持續運行
+        if num % 2 == 0:       #這個if判斷式是判斷是否為偶數 餘數是否=0
+            result += num      #此語句為result=result+num
+        num += 1               #每次循環時都將num+1
+    return result              #迴圈結束後使用return返回至函數
+print(add_only_even(1, 100))   #列印函數結果</pre>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/f113f873e3a21d25e8bad53f0a1b06aebb55edb2/W15.py">add_only_even</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(start, end):     #定義函數add_only_eve_8
+    result = 0                   #定義函數add_only_eve
+    num = start                  #初始化一個變數為num　並賦值為start
+    while num &lt;= end:            #設定一個while迴圈 循環條件為num &lt;= end只要當前的num沒有超過end就會持續運行
+        num_str = str(num)       #將當前的整數num轉換成字符串的形式透過str語句
+        if '8' not in num_str:   #這是一個if語句他是判斷num_str字符串中是否含8
+            result += num        #此語句為result=result+num
+        num += 1                 #每次循環時都將num+1
+    return result                #迴圈結束後使用return返回至函數     
+print(add_avoid_8(1, 100))       #列印函數結果</pre>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/1431b70ba0592f27c987a7f4f2e3a3f363b035f0/W158.py">add_only_avoid_8</a></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
