@@ -789,6 +789,8 @@ while i &lt;= 100:     #使用while迴圈把i加到等於100
     i += 1
 print(sum_result)</pre><h2>w15</h2>
 <p></p>
+<p>第一題：1~100</p>
+<p>　　我是使用while迴圈下去寫，邏輯大概是如果i小於100就持續執行1+2=3 3+4=7一直持續到i=100。</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sum_result = 0 #建立變數sum_result
 i = 1 #指定i等於1
 while i &lt;= 100:     #使用while迴圈把i加到等於100
@@ -796,7 +798,8 @@ while i &lt;= 100:     #使用while迴圈把i加到等於100
     i += 1
 print(sum_result)</pre>
 <p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15.py">1~100</a></p>
-<p></p>
+<p>第二題：指定開頭計算</p>
+<p>　　我一樣使用while迴圈下去寫，這次可以通過程式調整起始值所以加入了add_to函式庫進行調用。</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
 def addto(start, end):   #定義函數addto
     sum_result = 0       #設定數值sum_result=0
@@ -810,6 +813,8 @@ def addto(start, end):   #定義函數addto
 result = addto(1, 100)   #設定起始值
 print(result)            #列印result</pre>
 <p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15%25202.py"><span>addto</span></a></p>
+<p>第三題：只加偶數</p>
+<p>　　這次可以通過程式調整起始值並讓程式判斷使程式只加偶數數字，邏輯是除以2的餘=0再加入如果不等於0就判定為單數不加入。</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
 def add_only_even(start, end): #定義函數add_only_eve
     result = 0                 #在函數內部定義一個區域變數為result
@@ -821,6 +826,8 @@ def add_only_even(start, end): #定義函數add_only_eve
     return result              #迴圈結束後使用return返回至函數
 print(add_only_even(1, 100))   #列印函數結果</pre>
 <p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/f113f873e3a21d25e8bad53f0a1b06aebb55edb2/W15.py">add_only_even</a></p>
+<p>第四題：除了8都加入</p>
+<p>　　程式邏輯為將透過str指令將整束轉為字符串，再進行判斷裡面是否含有若無則加入倒數列其中</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(start, end):     #定義函數add_only_eve_8
     result = 0                   #定義函數add_only_eve
     num = start                  #初始化一個變數為num　並賦值為start

@@ -820,7 +820,18 @@ def add_only_even(start, end): #定義函數add_only_eve
         num += 1               #每次循環時都將num+1
     return result              #迴圈結束後使用return返回至函數
 print(add_only_even(1, 100))   #列印函數結果</pre>
-<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/f113f873e3a21d25e8bad53f0a1b06aebb55edb2/W15.py">add_only_even</a></p><h1>HW 2</h1>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/f113f873e3a21d25e8bad53f0a1b06aebb55edb2/W15.py">add_only_even</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(start, end):     #定義函數add_only_eve_8
+    result = 0                   #定義函數add_only_eve
+    num = start                  #初始化一個變數為num　並賦值為start
+    while num &lt;= end:            #設定一個while迴圈 循環條件為num &lt;= end只要當前的num沒有超過end就會持續運行
+        num_str = str(num)       #將當前的整數num轉換成字符串的形式透過str語句
+        if '8' not in num_str:   #這是一個if語句他是判斷num_str字符串中是否含8
+            result += num        #此語句為result=result+num
+        num += 1                 #每次循環時都將num+1
+    return result                #迴圈結束後使用return返回至函數     
+print(add_avoid_8(1, 100))       #列印函數結果</pre>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/1431b70ba0592f27c987a7f4f2e3a3f363b035f0/W158.py">add_only_avoid_8</a></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
