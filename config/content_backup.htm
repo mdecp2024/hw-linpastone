@@ -789,6 +789,8 @@ while i &lt;= 100:     #使用while迴圈把i加到等於100
     i += 1
 print(sum_result)</pre><h2>w15</h2>
 <p></p>
+<p>第一題：1~100</p>
+<p>　　我是使用while迴圈下去寫，邏輯大概是如果i小於100就持續執行1+2=3 3+4=7一直持續到i=100。</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sum_result = 0 #建立變數sum_result
 i = 1 #指定i等於1
 while i &lt;= 100:     #使用while迴圈把i加到等於100
@@ -796,7 +798,8 @@ while i &lt;= 100:     #使用while迴圈把i加到等於100
     i += 1
 print(sum_result)</pre>
 <p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15.py">1~100</a></p>
-<p></p>
+<p>第二題：指定開頭計算</p>
+<p>　　我一樣使用while迴圈下去寫，這次可以通過程式調整起始值所以加入了add_to函式庫進行調用。</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
 def addto(start, end):   #定義函數addto
     sum_result = 0       #設定數值sum_result=0
@@ -810,6 +813,8 @@ def addto(start, end):   #定義函數addto
 result = addto(1, 100)   #設定起始值
 print(result)            #列印result</pre>
 <p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/1d8f6c75cf0a6440dd3a21d41fb13b6b/raw/fdc14f231b088f124d914fce214339d752085399/W15%25202.py"><span>addto</span></a></p>
+<p>第三題：只加偶數</p>
+<p>　　這次可以通過程式調整起始值並讓程式判斷使程式只加偶數數字，邏輯是除以2的餘=0再加入如果不等於0就判定為單數不加入。</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">#運算程式
 def add_only_even(start, end): #定義函數add_only_eve
     result = 0                 #在函數內部定義一個區域變數為result
@@ -821,6 +826,8 @@ def add_only_even(start, end): #定義函數add_only_eve
     return result              #迴圈結束後使用return返回至函數
 print(add_only_even(1, 100))   #列印函數結果</pre>
 <p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/f113f873e3a21d25e8bad53f0a1b06aebb55edb2/W15.py">add_only_even</a></p>
+<p>第四題：除了8都加入</p>
+<p>　　程式邏輯為將透過str指令將整束轉為字符串，再進行判斷裡面是否含有若無則加入倒數列其中</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def add_avoid_8(start, end):     #定義函數add_only_eve_8
     result = 0                   #定義函數add_only_eve
     num = start                  #初始化一個變數為num　並賦值為start
@@ -831,7 +838,362 @@ print(add_only_even(1, 100))   #列印函數結果</pre>
         num += 1                 #每次循環時都將num+1
     return result                #迴圈結束後使用return返回至函數     
 print(add_avoid_8(1, 100))       #列印函數結果</pre>
-<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/1431b70ba0592f27c987a7f4f2e3a3f363b035f0/W158.py">add_only_avoid_8</a></p><h1>HW 2</h1>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/ffa3daf50dd6ad0fe1a08ff9c45bde2e/raw/1431b70ba0592f27c987a7f4f2e3a3f363b035f0/W158.py">add_only_avoid_8</a></p>
+<h2>w16_exam1</h2>
+<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document, html
+import math
+ 
+# 初始化 HTML，確保 canvas 元素存在
+def setup_canvas():
+    if not document.querySelector("#my_canvas"):
+        canvas = html.CANVAS(id="my_canvas", width=800, height=600)
+        document &lt;= canvas
+ 
+setup_canvas()
+
+# Set up canvas
+canvas = document["my_canvas"]
+ctx = canvas.getContext("2d")
+
+# Set origin (32, 17)
+origin_x, origin_y = 32, 17    #自己學號 修改
+
+# Draw X-axis
+ctx.beginPath()
+ctx.moveTo(origin_x, origin_y)
+ctx.lineTo(500, origin_y)
+ctx.strokeStyle = "black"
+ctx.lineWidth = 2
+ctx.stroke()
+
+# Draw Y-axis
+ctx.beginPath()
+ctx.moveTo(origin_x, origin_y)
+ctx.lineTo(origin_x, 300)
+ctx.stroke()
+
+# Label origin
+ctx.font = "12px Arial"
+ctx.fillStyle = "black"
+ctx.fillText("(32, 17)", origin_x + 5, origin_y - 5)
+
+# Draw shapes
+# Adjusted placement to fix alignment issue
+
+# Hexagon (Orange)
+hex_x, hex_y = 100, 100
+ctx.beginPath()
+for i in range(6):
+    angle = i * (2 * math.pi / 6)
+    x = hex_x + 30 * math.cos(angle)
+    y = hex_y + 30 * math.sin(angle)
+    if i == 0:
+        ctx.moveTo(x, y)
+    else:
+        ctx.lineTo(x, y)
+ctx.closePath()
+ctx.fillStyle = "orange"
+ctx.fill()
+
+# Diamond (Teal)
+ctx.beginPath()
+ctx.moveTo(160, 70)
+ctx.lineTo(180, 100)
+ctx.lineTo(160, 130)
+ctx.lineTo(140, 100)
+ctx.closePath()
+ctx.fillStyle = "teal"
+ctx.fill()
+
+# Triangle (Teal)
+ctx.beginPath()
+ctx.moveTo(165, 130)
+ctx.lineTo(205, 130)
+ctx.lineTo(185, 100)
+ctx.closePath()
+ctx.fillStyle = "blue"
+ctx.fill()
+
+# Circle (Pink)
+ctx.beginPath()
+ctx.arc(230, 100, 30, 0, 2 * math.pi)
+ctx.fillStyle = "pink"
+ctx.fill()
+
+# Square (Yellow)
+ctx.beginPath()
+ctx.rect(265, 75, 50, 50)
+ctx.fillStyle = "yellow"
+ctx.fill()
+
+# Rectangle (Blue)
+ctx.beginPath()
+ctx.rect(320, 90, 60, 20)
+ctx.fillStyle = "Blue"
+ctx.fill()
+</pre>
+<p><img alt="" height="355" src="/images/exam1.png" width="562"/></p>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/7ab700f4e89d600a702a2456dac2e21d/raw/6cf6bf855decf3d28021dec9492494bcfeef7fd9/exam1.py">Exam1 程式</a></p><h2>w16_exam2</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import math
+
+
+def draw_maze(angle_degrees):
+    # 创建和添加画布
+    canvas = html.CANVAS(width=1200, height=1200)
+    brython_div = doc["brython_div1"]
+    brython_div &lt;= canvas
+
+    # 获取绘图上下文
+    ctx = canvas.getContext("2d")
+
+    # 设置绘图参数
+    pixel_scale = 100
+    offset_x = 32 * 2
+    offset_y = 17 * 2
+    # 整体向右移动的偏移量
+    move_right_offset = 200
+    angle_radians = math.radians(angle_degrees)
+
+    # 定义迷宫线条
+    lines = [
+        ((0, 0), (1, 0)),
+        ((2, 0), (5, 0)),
+        ((5, 0), (5, 5)),
+        ((3, 5), (5, 5)),
+        ((4, 5), (4, 3)),
+        ((2, 3), (4, 3)),
+        ((1, 3), (1, 5)),
+        ((3, 3), (3, 2)),
+        ((0, 0), (0, 5)),
+        ((0, 5), (2, 5)),
+        ((2, 5), (2, 4)),
+        ((2, 4), (3, 4)),
+        ((0, 2), (1, 2)),
+        ((2, 2), (2, 1)),
+        ((0, 1), (4, 1)),
+        ((4, 1), (4, 2)),
+    ]
+
+    # 旋转并绘制迷宫线条
+    ctx.strokeStyle = "blue"
+    ctx.lineWidth = 2
+    for line in lines:
+        start = line[0]
+        end = line[1]
+
+        # 旋转起点坐标
+        start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
+            angle_radians)
+        start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
+            angle_radians)
+
+        # 旋转终点坐标
+        end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
+            angle_radians)
+        end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
+            angle_radians)
+
+        ctx.beginPath()
+        ctx.moveTo(
+            offset_x + move_right_offset + start_x_rotated,
+            offset_y + start_y_rotated
+        )
+        ctx.lineTo(
+            offset_x + move_right_offset + end_x_rotated,
+            offset_y + end_y_rotated
+        )
+        ctx.stroke()
+
+    return ctx, offset_x + move_right_offset, offset_y
+
+
+def label_coordinate(ctx, offset_x, offset_y, text_angle_degrees):
+    text_angle_radians = math.radians(text_angle_degrees)
+    ctx.font = "18px Arial"
+    ctx.fillStyle = "red"
+    # 原始文本位置
+    original_x = offset_x + 10
+    original_y = offset_y - 15
+    # 旋转后的文本位置
+    rotated_x = original_x * math.cos(text_angle_radians) - original_y * math.sin(text_angle_radians)
+    rotated_y = original_x * math.sin(text_angle_radians) + original_y * math.cos(text_angle_radians)
+    ctx.save()
+    ctx.translate(offset_x, offset_y)
+    ctx.rotate(text_angle_radians)
+    ctx.fillText("(32, 17)", 10, - 15)
+    ctx.restore()
+
+
+if __name__ == "__main__":
+    # 调整迷宫角度，这里设置为30度，可以根据需要修改
+    maze_angle = 0
+    # 文本角度
+    text_angle = 0
+    ctx, offset_x, offset_y = draw_maze(maze_angle)
+    label_coordinate(ctx, offset_x, offset_y, text_angle)
+</pre>
+<p><img alt="" height="573" src="/images/exam2.png" width="604"/></p>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/7ab700f4e89d600a702a2456dac2e21d/raw/3581218d365254657be65e773b86aa439d69329e/exam2.py">exam2程式</a></p>
+<p></p>
+<p></p><h2>w16_exam3</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html
+from browser import document as doc
+import math
+
+
+def draw_maze(angle_degrees):
+    # 创建和添加画布
+    canvas = html.CANVAS(width=1200, height=1200)
+    brython_div = doc["brython_div1"]
+    brython_div &lt;= canvas
+
+    # 获取绘图上下文
+    ctx = canvas.getContext("2d")
+
+    # 设置绘图参数
+    pixel_scale = 100
+    offset_x = 32 * 2
+    offset_y = 17 * 2
+    # 整体向右移动的偏移量
+    move_right_offset = 200
+    angle_radians = math.radians(angle_degrees)
+
+    # 定义迷宫线条
+    lines = [
+        ((0, 0), (1, 0)),
+        ((2, 0), (5, 0)),
+        ((5, 0), (5, 5)),
+        ((3, 5), (5, 5)),
+        ((4, 5), (4, 3)),
+        ((2, 3), (4, 3)),
+        ((1, 3), (1, 5)),
+        ((3, 3), (3, 2)),
+        ((0, 0), (0, 5)),
+        ((0, 5), (2, 5)),
+        ((2, 5), (2, 4)),
+        ((2, 4), (3, 4)),
+        ((0, 2), (1, 2)),
+        ((2, 2), (2, 1)),
+        ((0, 1), (4, 1)),
+        ((4, 1), (4, 2)),
+    ]
+
+    # 旋转并绘制迷宫线条
+    ctx.strokeStyle = "blue"
+    ctx.lineWidth = 2
+    for line in lines:
+        start = line[0]
+        end = line[1]
+
+        # 旋转起点坐标
+        start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
+            angle_radians)
+        start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
+            angle_radians)
+
+        # 旋转终点坐标
+        end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
+            angle_radians)
+        end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
+            angle_radians)
+
+        ctx.beginPath()
+        ctx.moveTo(
+            offset_x + move_right_offset + start_x_rotated,
+            offset_y + start_y_rotated
+        )
+        ctx.lineTo(
+            offset_x + move_right_offset + end_x_rotated,
+            offset_y + end_y_rotated
+        )
+        ctx.stroke()
+
+    return ctx, offset_x + move_right_offset, offset_y, pixel_scale
+
+
+def find_path():
+    # 简单的路径示例，这里假设的路径，实际需要更复杂的算法
+    # 为了维持原本迷宫路线，这里路径假设不破坏迷宫已有路线
+    path = [
+        ((1.5, 0), (1.5, 0.5)),
+        ((1.5, 0.5), (4.5, 0.5)),
+        ((4.5, 0.5), (4.5, 2.5)),
+        ((4.5, 2.5), (3.5, 2.5)),
+        ((3.5, 2.5), (3.5, 1.5)),
+        ((3.5, 1.5), (2.5, 1.5)),
+        ((2.5, 1.5), (2.5, 2.5)),
+        ((2.5, 2.5), (1.5, 2.5)),
+        ((1.5, 2.5), (1.5, 3.5)),
+        ((1.5, 3.5), (3.5, 3.5)),
+        ((3.5, 3.5), (3.5, 4.5)),
+        ((3.5, 4.5), (2.5, 4.5)),
+        ((2.5, 4.5), (2.5, 5))
+    ]
+    return path
+
+
+def draw_path(ctx, offset_x, offset_y, angle_degrees, path, pixel_scale):
+    angle_radians = math.radians(angle_degrees)
+    ctx.strokeStyle = "red"
+    ctx.lineWidth = 2
+    for line in path:
+        start = line[0]
+        end = line[1]
+
+        # 旋转起点坐标
+        start_x_rotated = start[0] * pixel_scale * math.cos(angle_radians) - start[1] * pixel_scale * math.sin(
+            angle_radians)
+        start_y_rotated = start[0] * pixel_scale * math.sin(angle_radians) + start[1] * pixel_scale * math.cos(
+            angle_radians)
+
+        # 旋转终点坐标
+        end_x_rotated = end[0] * pixel_scale * math.cos(angle_radians) - end[1] * pixel_scale * math.sin(
+            angle_radians)
+        end_y_rotated = end[0] * pixel_scale * math.sin(angle_radians) + end[1] * pixel_scale * math.cos(
+            angle_radians)
+
+        ctx.beginPath()
+        ctx.moveTo(
+            offset_x + start_x_rotated,
+            offset_y + start_y_rotated
+        )
+        ctx.lineTo(
+            offset_x + end_x_rotated,
+            offset_y + end_y_rotated
+        )
+        ctx.stroke()
+
+
+def label_coordinate(ctx, offset_x, offset_y, text_angle_degrees):
+    text_angle_radians = math.radians(text_angle_degrees)
+    ctx.font = "18px Arial"
+    ctx.fillStyle = "red"
+    # 原始文本位置
+    original_x = offset_x + 10
+    original_y = offset_y - 15
+    # 旋转后的文本位置
+    rotated_x = original_x * math.cos(text_angle_radians) - original_y * math.sin(text_angle_radians)
+    rotated_y = original_x * math.sin(text_angle_radians) + original_y * math.cos(text_angle_radians)
+    ctx.save()
+    ctx.translate(offset_x, offset_y)
+    ctx.rotate(text_angle_radians)
+    ctx.fillText("(32, 17)", 10, - 15)
+    ctx.restore()
+
+
+if __name__ == "__main__":
+    # 调整迷宫角度，这里设置为30度，可以根据需要修改
+    maze_angle = 0
+    # 文本角度
+    text_angle = 0
+    ctx, offset_x, offset_y, pixel_scale = draw_maze(maze_angle)
+    path = find_path()
+    draw_path(ctx, offset_x, offset_y, maze_angle, path, pixel_scale)
+    label_coordinate(ctx, offset_x, offset_y, text_angle)</pre>
+<p><a href="https://mdecp2024.github.io/hw-linpastone-41323217/content/Brython.html?src=https://gist.githubusercontent.com/linpastone/7ab700f4e89d600a702a2456dac2e21d/raw/d2d0c30ef61e70f13ebcaa30ad317863356f4961/exam3.py">exam3程式</a></p><h1>HW 2</h1>
 <h4>主題: Python 的數列、判斷式與重複迴圈 (20%)<span style="background-color: #ffff99;"><br/></span></h4>
 <p style="padding-left: 30px;">Python 課程教材: <a href="https://www.learnpythonwithjupyter.com/">https://www.learnpythonwithjupyter.com/</a> - PART 2 and Part 3</p>
 <hr/>
